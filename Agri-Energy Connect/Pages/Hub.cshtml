@@ -1,0 +1,153 @@
+﻿@page
+@model HubModel
+@{
+    ViewData["Title"] = "Green Energy Hub";
+}
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #eef5f0;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background-color: #2e7d32;
+        color: white;
+        padding: 25px;
+        text-align: center;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 30px auto;
+        padding: 0 20px;
+    }
+
+    .post-form {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 6px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 40px;
+    }
+
+    .post-form h2 {
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+        color: #2e7d32;
+    }
+
+    .post-form input, .post-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1rem;
+    }
+
+    .post-form button {
+        background-color: #2e7d32;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .post-form button:hover {
+        background-color: #388e3c;
+    }
+
+    .post {
+        background: white;
+        padding: 15px 20px;
+        margin-bottom: 20px;
+        border-left: 5px solid #66bb6a;
+        border-radius: 5px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    .post h3 {
+        margin: 0 0 10px;
+        color: #2e7d32;
+        font-size: 1.2rem;
+    }
+
+    .post p {
+        margin: 0;
+        font-size: 0.95rem;
+        color: #333;
+    }
+
+    .post-footer {
+        margin-top: 10px;
+        font-size: 0.85rem;
+        color: #777;
+    }
+</style>
+
+<header>
+    <h1>Green Energy Hub</h1>
+    <p>Share your best practices, ask questions, and help grow the green community 🌱</p>
+</header>
+
+<div class="container">
+    <div class="post-form">
+        <h2>Share Something New</h2>
+        <form method="post">
+            <input type="text" name="Title" placeholder="Post Title" required />
+            <textarea name="Content" rows="4" placeholder="Share your tip, question, or story..." required></textarea>
+            <button type="submit">Post</button>
+        </form>
+    </div>
+
+    @if (Model.Posts != null && Model.Posts.Any())
+    {
+        @foreach (var post in Model.Posts)
+        {
+            <div class="post">
+                <h3>@post.Title</h3>
+                <p>@post.Content</p>
+                <div class="post-footer">
+                    Posted by <strong>@post.Author</strong> • @post.PostedAt.ToString("g")
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <!-- Prototype data fallback -->
+        <div class="post">
+            <h3>Welcome to the Green Energy Hub!</h3>
+            <p>Share your green farming tips, ideas, and questions with the community.</p>
+            <div class="post-footer">
+                Posted by <strong>Admin</strong> • @DateTime.Now.AddDays(-3).ToString("g")
+            </div>
+        </div>
+
+        <div class="post">
+            <h3>Solar Irrigation Systems</h3>
+            <p>I installed a solar-powered drip irrigation system—cut my water usage by 30%.</p>
+            <div class="post-footer">
+                Posted by <strong>SolarSue</strong> • @DateTime.Now.AddDays(-2).ToString("g")
+            </div>
+        </div>
+
+        <div class="post">
+            <h3>Composting with Manure</h3>
+            <p>Mixing goat manure with dry leaves and kitchen waste works wonders.</p>
+            <div class="post-footer">
+                Posted by <strong>EcoFarmer</strong> • @DateTime.Now.AddDays(-1).ToString("g")
+            </div>
+        </div>
+    }
+</div>

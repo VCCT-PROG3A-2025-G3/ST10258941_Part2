@@ -1,0 +1,160 @@
+﻿@page
+@model PrivacyModel
+@{
+    ViewData["Title"] = "Green Energy Learning Hub";
+}
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f8f5;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background-color: #2e7d32;
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+    }
+
+    header p {
+        margin-top: 10px;
+        font-size: 1.2rem;
+    }
+
+    .content {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+
+    .section {
+        margin-bottom: 40px;
+    }
+
+    .section h2 {
+        color: #2e7d32;
+        border-bottom: 2px solid #c8e6c9;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+
+    .resource-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .resource-list li {
+        background-color: #ffffff;
+        border-left: 5px solid #66bb6a;
+        padding: 15px 20px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .resource-list li:hover {
+        background-color: #e8f5e9;
+    }
+
+    .resource-list a {
+        text-decoration: none;
+        color: #1b5e20;
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+
+    .resource-list p {
+        margin: 5px 0 0 0;
+        color: #4e4e4e;
+        font-size: 0.95rem;
+    }
+
+
+</style>
+
+<header>
+    <h1>Green Energy Learning Hub</h1>
+    <p>Explore top resources to learn about renewable energy, sustainability, and clean technology careers.</p>
+</header>
+
+<div class="content">
+    <div class="section">
+        <h2>🌱 Beginner-Friendly Courses</h2>
+        <ul class="resource-list">
+            <li>
+                <a href="https://www.solarenergy.org/courses/introduction-to-renewable-energy/" target="_blank">RE100: Introduction to Renewable Energy</a>
+                <p>A free course covering the basics of solar, wind, and energy efficiency—ideal for newcomers to the field.</p>
+            </li>
+            <li>
+                <a href="https://education.nationalgeographic.org/resource/renewable-energy/" target="_blank">National Geographic: Renewable Energy</a>
+                <p>Engaging articles and visuals explaining how wind, solar, and geothermal energy work.</p>
+            </li>
+            <li>
+                <a href="https://www.energy.gov/energysaver/energy-resources-educators" target="_blank">U.S. Department of Energy: Educator Resources</a>
+                <p>Comics, coloring books, and lesson plans for K–12 students exploring energy efficiency and renewables.</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>📘 Professional Training & Certifications</h2>
+        <ul class="resource-list">
+            <li>
+                <a href="https://www.renewableinstitute.org/training-courses/" target="_blank">Renewable Energy Institute: Training Courses</a>
+                <p>Comprehensive programs on solar, wind, electric vehicles, and energy storage—ideal for career development.</p>
+            </li>
+            <li>
+                <a href="https://irecusa.org/clean-energy-training/" target="_blank">IREC Clean Energy Training</a>
+                <p>Free CEU-bearing courses and resources for professionals entering the clean energy workforce.</p>
+            </li>
+            <li>
+                <a href="https://www.coursera.org/courses?query=renewable%20energy" target="_blank">Coursera: Renewable Energy Courses</a>
+                <p>Online courses from top universities covering solar, wind, grid integration, and sustainability policy.</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>🧰 Tools & Teaching Materials</h2>
+        <ul class="resource-list">
+            <li>
+                <a href="https://sciencetrek.org/topics/green-energy/resources" target="_blank">Science Trek: Green Energy Resources</a>
+                <p>Lesson plans and hands-on activities for students to explore renewable energy technologies.</p>
+            </li>
+            <li>
+                <a href="https://cleanet.org/index.html" target="_blank">CLEAN: Climate and Energy Education Resources</a>
+                <p>Curated collection of climate and energy science teaching materials for educators.</p>
+            </li>
+            <li>
+                <a href="https://www.cleanenergytraining.org/" target="_blank">Clean Energy Training from IREC</a>
+                <p>Search for courses and educational resources related to clean energy based on your job role or career path.</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>🌍 Global & Youth-Focused Initiatives</h2>
+        <ul class="resource-list">
+            <li>
+                <a href="https://en.unesco.org/themes/education/sdgs/material/07" target="_blank">UNESCO: Affordable and Clean Energy Resources</a>
+                <p>Classroom activities and materials promoting SDG 7—Affordable and Clean Energy.</p>
+            </li>
+            <li>
+                <a href="https://www.eia.gov/kids/energy-sources/renewable/" target="_blank">EIA Energy Kids: Renewable Energy</a>
+                <p>Kid-friendly explanations of renewable energy sources like biomass, hydropower, and solar.</p>
+            </li>
+            <li>
+                <a href="https://www.cleanenergyexcellence.org/k-12/" target="_blank">Clean Energy Excellence: K–12 Resources</a>
+                <p>Extensive links to STEM and clean energy resources for K–12 educators, parents, and students.</p>
+            </li>
+        </ul>
+    </div>
+</div>

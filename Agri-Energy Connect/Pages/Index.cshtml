@@ -1,0 +1,171 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Marketplace";
+}
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background-color: #2e7d32;
+        color: white;
+        padding: 30px;
+        text-align: center;
+    }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+    .container {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+
+    .filter-section {
+        margin-bottom: 20px;
+    }
+
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 25px;
+    }
+
+    .product-card {
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+        .product-card img {
+            max-width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+    .product-name {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 8px;
+    }
+
+    .product-price {
+        color: #388e3c;
+        font-size: 1rem;
+        margin-bottom: 8px;
+    }
+
+    .product-category {
+        font-size: 0.95rem;
+        color: #555;
+        margin-bottom: 8px;
+    }
+
+    .product-description {
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    .logout-button {
+        display: block;
+        margin: 30px auto;
+        background-color: #c62828;
+        color: white;
+        padding: 10px 20px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .logout-button:hover {
+            background-color: #b71c1c;
+        }
+</style>
+
+<header>
+    <h1>Marketplace</h1>
+    <p>Explore energy and irrigation products available in your area.</p>
+</header>
+
+<div class="container">
+    <div class="filter-section">
+        <form method="post" asp-page-handler="Filter" class="mb-3">
+            <label>Category:</label>
+            <select asp-for="SelectedCategory"
+                    asp-items="@(new SelectList(Model.Categories))">
+                <option value="">-- All Categories --</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+
+        <form method="post" asp-page-handler="FilterByUser" class="mb-4">
+            <label>Filter by Poster:</label>
+            <select name="selectedPoster" asp-for="SelectedPoster"
+                    asp-items="@(new SelectList(Model.PostedByUsers))">
+                <option value="">-- All Posters --</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Apply</button>
+        </form>
+
+
+        <form method="post" asp-page-handler="Sort" class="mb-4">
+            <label>Sort By:</label>
+            <select asp-for="SortOrder"
+                    asp-items="@(new SelectList(new[] { "Newest", "Oldest" }))">
+            </select>
+            <button type="submit" class="btn btn-primary">Sort</button>
+        </form>
+    </div>
+
+    <div class="product-grid">
+        @if (Model.ProductsToShow != null && Model.ProductsToShow.Count > 0)
+        {
+            foreach (var product in Model.ProductsToShow)
+            {
+                <div class="product-card">
+                    <img src="@(string.IsNullOrWhiteSpace(product.ImageFileName)
+                     ? "/images/default.jpg"
+                       : "/uploads/" + product.ImageFileName)"
+                         alt="@product.ProductName" />
+                    <div class="product-name">@product.ProductName</div>
+                    <div class="product-category">Category: @product.Category</div>
+                    <div class="product-price">
+                        @product.Price.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-ZA"))
+                    </div>
+                    <div class="product-production-date">
+                        Production Date: @product.ProductionDate.ToString("yyyy-MM-dd")
+                    </div>
+                    <div class="product-description">@product.Description</div>
+                    <div class="product-poster">
+                        <strong>Posted By:</strong> @product.PostedBy
+                    </div>
+                </div>
+
+            }
+        }
+        else
+        {
+            <p>No products found.</p>
+        }
+    </div>
+
+    <form method="post" asp-page-handler="Logout">
+        <button class="logout-button" type="submit">Logout</button>
+    </form>
+</div>

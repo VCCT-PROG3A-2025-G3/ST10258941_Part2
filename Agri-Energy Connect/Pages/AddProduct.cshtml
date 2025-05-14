@@ -1,0 +1,157 @@
+﻿@page
+@model AddProductModel
+@{
+    ViewData["Title"] = "Add New Product";
+}
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background-color: #2e7d32;
+        color: white;
+        padding: 30px;
+        text-align: center;
+    }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+    .container {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+
+    .product-form {
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 6px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+        .product-form h2 {
+            margin-bottom: 20px;
+            font-size: 1.75rem;
+            color: #2e7d32;
+        }
+
+        .product-form label {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .product-form input, .product-form select, .product-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .product-form textarea {
+            resize: vertical;
+            height: 120px;
+        }
+
+        .product-form button {
+            background-color: #43a047;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            .product-form button:hover {
+                background-color: #388e3c;
+            }
+
+        .product-form .file-input {
+            background: #fff;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+</style>
+
+<header>
+    <h1>Add New Product</h1>
+    <p>Fill out the form below to add a new product to your inventory</p>
+</header>
+
+<div class="container">
+    <div class="product-form">
+        <h2>Product Details</h2>
+        <form method="post" enctype="multipart/form-data">
+            <div>
+                <label for="ProductName">Product Name</label>
+                <input type="text" id="ProductName" name="ProductName" required placeholder="Enter product name" />
+            </div>
+
+            <div>
+                <label for="Category">Category</label>
+                <select id="Category" name="Category" required>
+                    <option value="">Select a category</option>
+                    <option value="Energy">Energy</option>
+                    <option value="Irrigation">Irrigation</option>   
+                    <option value="Soil">Soil</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="ProductionDate">Production Date</label>
+                <input type="date" id="ProductionDate" name="ProductionDate" required />
+            </div>
+
+            <div>
+                <label for="Price">Price (R)</label>
+                <input type="number" id="Price" name="Price" required placeholder="Enter product price" />
+            </div>
+
+            <div>
+                <label for="Description">Description</label>
+                <textarea id="Description" name="Description" placeholder="Enter a description of the product" required></textarea>
+            </div>
+
+            <div>
+                <label for="ProductImage">Product Image</label>
+                <input type="file" id="ProductImage" name="ProductImage" class="file-input" accept="image/*" />
+            </div>
+
+            <div>
+                <button type="submit">Add Product</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (Model.UserProducts != null && Model.UserProducts.Count > 0)
+{
+    <h2>Your Products</h2>
+    <ul>
+        @foreach (var product in Model.UserProducts)
+        {
+            <li>
+                <strong>@product.ProductName</strong> - @product.Category<br />
+                Produced on: @product.ProductionDate.ToShortDateString()<br />
+                Price: @product.Price.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-ZA"))<br />
+                Description: @product.Description<br />
+                Image: @product.ImageFileName<br />
+                <span><strong>Posted By:</strong> @product.PostedBy</span>
+            </li>
+        }
+    </ul>
+}
+
