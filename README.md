@@ -42,7 +42,6 @@ Update-Database
 
 Build and Run the Application:
 Build the solution: Build > Build Solution or press Ctrl + Shift + B.
-
 Run the application: Press F5 or click on the Start button.
 
 👥 User Roles
@@ -50,6 +49,6 @@ Farmer:
 Add and manage personal product listings.
 View own products.
 
-Employee:
+👥 Employee:
 Add and manage farmer profiles.
 View and filter products from all farmers based on criteria like date range and product type.
