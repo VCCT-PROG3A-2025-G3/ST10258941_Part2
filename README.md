@@ -21,7 +21,9 @@ Visual Studio (latest version recommended)
 .NET Framework
 SQL Server Management Studio (SSMS)
 
-Steps
+
+
+Steps:
 
 Clone the Repository:
 git clone https://github.com/LiamSteyn/Agri-Energy-Connect.git
@@ -43,6 +45,8 @@ Update-Database
 Build and Run the Application:
 Build the solution: Build > Build Solution or press Ctrl + Shift + B.
 Run the application: Press F5 or click on the Start button.
+
+
 
 👥 User Roles
 Farmer:
